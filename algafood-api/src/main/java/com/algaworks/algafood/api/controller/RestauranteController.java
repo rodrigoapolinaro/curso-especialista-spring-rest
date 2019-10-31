@@ -89,11 +89,11 @@ public class RestauranteController {
 	public ResponseEntity<?> atualizarParcial(@PathVariable Long restauranteId,
 			@RequestBody Map<String, Object> campos) {
 		
-//		campos.forEach((nomePropriedade, valorPropriedade) -> {
-//			System.out.println(nomePropriedade + " = " + valorPropriedade);
-//		});
-//		
-//		return ResponseEntity.ok().build();
+		
+		campos.forEach((nomePropriedade, valorPropriedade) -> {
+			System.out.println(nomePropriedade + " = " + valorPropriedade);
+		});
+		
 		
 		Restaurante restauranteAtual = restauranteRepository.buscar(restauranteId);
 		
