@@ -1,6 +1,7 @@
 package com.algaworks.algafood.api.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class EstadoController {
 	
 	@GetMapping
 	public List<Estado> listar() {
-		return estadoRepository.listar();
+		return estadoRepository.findAll();
 	}
 	
 	@PostMapping
@@ -47,14 +48,14 @@ public class EstadoController {
 	public ResponseEntity<Estado> atualizar(@PathVariable Long estadoId,
 			@RequestBody Estado estado) {
 		
-		Estado estadoAtual = estadoRepository.buscar(estadoId);
+		Optional<Estado> estadoAtual = estadoRepository.findById(estadoId);
 			
-		if (estadoAtual != null) {
-			BeanUtils.copyProperties(estado, estadoAtual, "id");
+		if (estadoAtual.isPresent()) {
+			BeanUtils.copyProperties(estado, estadoAtual.get(), "id");
 			
-			estadoAtual = cadastroEstado.salvar(estadoAtual);
+			Estado estadoSalvo = cadastroEstado.salvar(estadoAtual.get());
 			
-			return ResponseEntity.ok(estadoAtual);
+			return ResponseEntity.ok(estadoSalvo);
 		}
 		
 		return ResponseEntity.notFound().build();

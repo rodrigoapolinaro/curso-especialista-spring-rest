@@ -1,6 +1,7 @@
 package com.algaworks.algafood.api.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class CidadeController {
 	
 	@GetMapping
 	public List<Cidade> listar() {
-		return cidadeRepository.listar();
+		return cidadeRepository.findAll();
 	}
 	
 	@PostMapping
@@ -53,14 +54,14 @@ public class CidadeController {
 	public ResponseEntity<?> atualizar(@PathVariable Long cidadeId,
 			@RequestBody Cidade cidade) {
 		try {
-			Cidade cidadeAtual = cidadeRepository.buscar(cidadeId);
+			Optional<Cidade> cidadeAtual = cidadeRepository.findById(cidadeId);
 			
-			if (cidadeAtual != null) {
-				BeanUtils.copyProperties(cidade, cidadeAtual, "id");
+			if (cidadeAtual.isPresent()) {
+				BeanUtils.copyProperties(cidade, cidadeAtual.get(), "id");
 			
-				cidadeAtual = cadastroCidade.salvar(cidadeAtual);
+				Cidade cidadeSalva = cadastroCidade.salvar(cidadeAtual.get());
 				
-				return ResponseEntity.ok(cidadeAtual);
+				return ResponseEntity.ok(cidadeSalva);
 			}
 		
 			return ResponseEntity.notFound().build();
