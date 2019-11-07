@@ -1,7 +1,0 @@
-package com.algaworks.algafood.domain.repository;
-
-public interface CozinhaRepository {
-	
-//	List<Cozinha> consultaPorNome(String nome);
-	
-}
