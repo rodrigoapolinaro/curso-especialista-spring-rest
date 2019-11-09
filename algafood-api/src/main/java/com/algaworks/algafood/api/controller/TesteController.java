@@ -24,44 +24,49 @@ public class TesteController {
 	@Autowired
 	private RestauranteRepository restauranteRepository;
 	
-	@GetMapping("cozinhas/por-nome")
+	@GetMapping("/cozinhas/por-nome")
 	public List<Cozinha> cozinhasPorNome(String nome) {
 		return cozinhaRepository.findTodasByNomeContaining(nome);
 	}
 	
-	@GetMapping("cozinhas/unica-por-nome")
+	@GetMapping("/cozinhas/unica-por-nome")
 	public Optional<Cozinha> cozinhaPorNome(String nome) {
 		return cozinhaRepository.findByNome(nome);
 	}
 	
-	@GetMapping("cozinhas/exists")
+	@GetMapping("/cozinhas/exists")
 	public boolean cozinhaExists(String nome) {
 		return cozinhaRepository.existsByNome(nome);
 	}
 	
-	@GetMapping("restaurante/por-taxa-frete")
+	@GetMapping("/restaurantes/por-taxa-frete")
 	public List<Restaurante> restaurantePorTaxaFrete(
 			BigDecimal taxaInicial, BigDecimal taxaFinal) {
 		return restauranteRepository.queryByTaxaFreteBetween(taxaInicial, taxaFinal);
 	}
 	
-	@GetMapping("restaurante/por-nome")
+	@GetMapping("/restaurantes/por-nome")
 	public List<Restaurante> restaurantePorNome(
 			String nome, Long cozinhaId) {
 		return restauranteRepository.consultarPorNome(nome, cozinhaId);
 	}
 	
-	@GetMapping("restaurante/primeiro-por-nome")
+	@GetMapping("/restaurantes/primeiro-por-nome")
 	public Optional<Restaurante> restaurantePrimeiroPorNome(String nome) {
 		return restauranteRepository.findFirstRestauranteByNomeContaining(nome);
 	}
 	
-	@GetMapping("restaurante/top2-por-nome")
+	@GetMapping("/restaurantes/top2-por-nome")
 	public List<Restaurante> restaurantesTop2PorNome(String nome) {
 		return restauranteRepository.findTop2ByNomeContaining(nome);
 	}
+	@GetMapping("/restaurantes/por-nome-e-frete")
+	public List<Restaurante> restaurantesPorNomeFrete(String nome, 
+			BigDecimal taxaFreteInicial, BigDecimal taxaFreteFinal) {
+		return restauranteRepository.find(nome, taxaFreteInicial, taxaFreteFinal);
+	}
 	
-	@GetMapping("restaurante/count-por-cozinha")
+	@GetMapping("/restaurantes/count-por-cozinha")
 	public int restaurantesCountPorCozinha(Long cozinhaId) {
 		return restauranteRepository.countByCozinhaId(cozinhaId);
 	}
