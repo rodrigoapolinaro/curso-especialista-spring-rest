@@ -52,10 +52,10 @@ public class RestauranteController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<?> adicionar(@RequestBody Restaurante restaurante) {
+	public ResponseEntity<?> adicionar(@RequestBody Restaurante restaurante) {	
 		try {
 			restaurante = cadastroRestaurante.salvar(restaurante);
-			
+						
 			return ResponseEntity.status(HttpStatus.CREATED)
 					.body(restaurante);
 		} catch (Exception e) {
@@ -68,15 +68,15 @@ public class RestauranteController {
 	public ResponseEntity<?> atualizar(@PathVariable Long restauranteId,
 			@RequestBody Restaurante restaurante) {
 		try {
-			Optional<Restaurante> restauranteAtual = restauranteRepository.findById(restauranteId);
+			Restaurante restauranteAtual = restauranteRepository
+							.findById(restauranteId).orElse(null);
 			
-			if (restauranteAtual.isPresent()) {
-				BeanUtils.copyProperties(restaurante, restauranteAtual.get(), 
-						"id", "formasPagamento", "endereco");
+			if (restauranteAtual != null) {
+				BeanUtils.copyProperties(restaurante, restauranteAtual, 
+						"id", "formasPagamento", "endereco", "dataCadastro");
 			
-				Restaurante restauranteSalvo = cadastroRestaurante.salvar(restauranteAtual.get());
-			
-				return ResponseEntity.ok(restauranteSalvo);
+				restauranteAtual = cadastroRestaurante.salvar(restauranteAtual);
+				return ResponseEntity.ok(restauranteAtual);
 			}
 		
 			return ResponseEntity.notFound().build();
