@@ -29,7 +29,7 @@ public class CadastroCidadeService {
 		Long estadoId = cidade.getEstado().getId();
 		
 		Estado estado = cadastroEstado.buscarOuFalhar(estadoId);
-		
+		 
 //		Estado estado = estadoRepository.findById(estadoId)
 //				.orElseThrow(() -> new EntidadeNaoEncontraException(
 //						String.format("Não existe cadastro de estado com código %d", estadoId)));
