@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.algaworks.algafood.domain.model.Estado;
 import com.algaworks.algafood.domain.repository.EstadoRepository;
-import com.algaworks.algafood.domain.service.CasdastroEstadoService;
+import com.algaworks.algafood.domain.service.CadastroEstadoService;
 
 @RestController
 @RequestMapping("/estados")
@@ -27,7 +27,7 @@ public class EstadoController {
 	private EstadoRepository estadoRepository;
 	
 	@Autowired
-	private CasdastroEstadoService cadastroEstado;
+	private CadastroEstadoService cadastroEstado;
 	
 	@GetMapping
 	public List<Estado> listar() {

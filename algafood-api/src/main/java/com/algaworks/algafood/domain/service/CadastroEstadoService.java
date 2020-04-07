@@ -11,7 +11,7 @@ import com.algaworks.algafood.domain.model.Estado;
 import com.algaworks.algafood.domain.repository.EstadoRepository;
 
 @Service
-public class CasdastroEstadoService {
+public class CadastroEstadoService {
 	
 	private static final String MSG_ESTADO_EM_USO = 
 			"Estado de código %d não pode ser removido, pois está em uso";
