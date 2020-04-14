@@ -1,3 +1,5 @@
+package com.algaworks.algafood.api.exceptionhandler;
+
 import java.time.LocalDateTime;
 
 import org.springframework.http.HttpStatus;
@@ -6,7 +8,7 @@ import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.algaworks.algafood.api.exceptionhandler.Problema;
+import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontraException;
 import com.algaworks.algafood.domain.exception.NegocioException;
 
@@ -43,5 +45,17 @@ public class ApiExceptionHandler {
 		return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
 				.body(problema);
 	}
+	
+	@ExceptionHandler(EntidadeEmUsoException.class)
+	public ResponseEntity<?> tratarEntidadeEmUsoException(
+			EntidadeEmUsoException e) {
+		Problema problema = Problema.builder()
+				.dataHora(LocalDateTime.now())
+				.mensagem(e.getMessage()).build();
+		
+		return ResponseEntity.status(HttpStatus.CONFLICT)
+				.body(problema);
+	}
+	
 
 }
