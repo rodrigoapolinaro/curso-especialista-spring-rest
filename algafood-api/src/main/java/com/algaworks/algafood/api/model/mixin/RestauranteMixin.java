@@ -13,7 +13,7 @@ import com.algaworks.algafood.domain.model.Produto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-public class RestauranteMixin {
+public abstract class RestauranteMixin {
 	
 	@JsonIgnoreProperties(value = "nome", allowGetters = true)
 	private Cozinha cozinha;
