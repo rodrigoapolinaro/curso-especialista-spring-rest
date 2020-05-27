@@ -1,10 +1,7 @@
 package com.algaworks.algafood.api.model.mixin;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.time.OffsetDateTime;
 import java.util.List;
-
-import javax.persistence.Column;
 
 import com.algaworks.algafood.domain.model.Cozinha;
 import com.algaworks.algafood.domain.model.Endereco;
@@ -14,25 +11,23 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public abstract class RestauranteMixin {
-	
+
 	@JsonIgnoreProperties(value = "nome", allowGetters = true)
 	private Cozinha cozinha;
 	
 	@JsonIgnore
 	private Endereco endereco;
 	
-	@JsonIgnore
-	@Column(nullable = false, columnDefinition = "datetime")
-	private LocalDateTime dataCadastro;
+//	@JsonIgnore
+	private OffsetDateTime dataCadastro;
+	
+//	@JsonIgnore
+	private OffsetDateTime dataAtualizacao;
 	
 	@JsonIgnore
-	@Column(nullable = false, columnDefinition = "datetime")
-	private LocalDateTime dataAtualizacao;
+	private List<FormaPagamento> formasPagamento;
 	
 	@JsonIgnore
-	private List<FormaPagamento> formasPagamento = new ArrayList<>();
-	
-	@JsonIgnore
-	private List<Produto> produtos = new ArrayList<>();
+	private List<Produto> produtos;
 
 }
