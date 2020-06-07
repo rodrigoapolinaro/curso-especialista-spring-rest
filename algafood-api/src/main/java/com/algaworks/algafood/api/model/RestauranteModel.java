@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 public class RestauranteModel {
 	
-	private String id; 
+	private Long id; 
 	private String nome;
 	private BigDecimal taxaFrete;
 	private CozinhaModel cozinha;
