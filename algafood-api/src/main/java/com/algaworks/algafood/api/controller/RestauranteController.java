@@ -22,7 +22,6 @@ import com.algaworks.algafood.api.model.RestauranteModel;
 import com.algaworks.algafood.api.model.input.RestauranteInput;
 import com.algaworks.algafood.domain.exception.CidadeNaoEncontraException;
 import com.algaworks.algafood.domain.exception.CozinhaNaoEncontraException;
-import com.algaworks.algafood.domain.exception.EntidadeNaoEncontraException;
 import com.algaworks.algafood.domain.exception.NegocioException;
 import com.algaworks.algafood.domain.model.Restaurante;
 import com.algaworks.algafood.domain.repository.RestauranteRepository;

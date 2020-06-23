@@ -45,5 +45,13 @@ public class Usuario {
 	@JoinTable(name = "usuario_grupo", joinColumns = @JoinColumn(name = "usuario_id"),
 					inverseJoinColumns = @JoinColumn(name = "grupo_id"))
 	private List<Grupo> grupos = new ArrayList<>();
+	
+	public boolean senhaCoindideCom(String senha) {
+		return getSenha().equals(senha);
+	}
+	
+	public boolean senhaNaoConcidem(String senha) {
+		return !senhaCoindideCom(senha);
+	}
 
 }
