@@ -34,6 +34,23 @@ insert into cozinha (id, nome) values (1, 'Tailandesa');
 insert into cozinha (id, nome) values (2, 'Indiana');
 insert into cozinha (id, nome) values (3, 'Argentina');
 insert into cozinha (id, nome) values (4, 'Brasileira');
+insert into cozinha (id, nome) values (5, 'Teste5');
+insert into cozinha (id, nome) values (6, 'Teste6');
+insert into cozinha (id, nome) values (7, 'Teste7');
+insert into cozinha (id, nome) values (8, 'Teste8');
+insert into cozinha (id, nome) values (9, 'Teste9');
+insert into cozinha (id, nome) values (10, 'Teste10');
+insert into cozinha (id, nome) values (11, 'Teste11');
+insert into cozinha (id, nome) values (12, 'Teste12');
+insert into cozinha (id, nome) values (13, 'Teste13');
+insert into cozinha (id, nome) values (14, 'Teste14');
+insert into cozinha (id, nome) values (15, 'Teste15');
+insert into cozinha (id, nome) values (16, 'Teste16');
+insert into cozinha (id, nome) values (17, 'Teste17');
+insert into cozinha (id, nome) values (18, 'Teste18');
+insert into cozinha (id, nome) values (19, 'Teste19');
+insert into cozinha (id, nome) values (20, 'Teste20');
+
 
 insert into estado (id, nome) values (1, 'Minas Gerais');
 insert into estado (id, nome) values (2, 'São Paulo');
