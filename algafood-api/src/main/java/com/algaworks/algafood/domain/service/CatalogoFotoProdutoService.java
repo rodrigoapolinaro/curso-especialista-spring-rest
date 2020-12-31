@@ -64,5 +64,5 @@ public class CatalogoFotoProdutoService {
 		
 		fotoStorage.remover(foto.getNomeArquivo());
 	}
-
+	
 }
