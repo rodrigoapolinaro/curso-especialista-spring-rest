@@ -13,7 +13,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Component
-@ConfigurationProperties("agafood.storage")
+@ConfigurationProperties("algafood.storage")
 public class StorageProperties {
 
 	private Local local = new Local();
