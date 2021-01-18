@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import com.algaworks.algafood.api.assembler.RestauranteModelAssembler;
 import com.algaworks.algafood.api.model.RestauranteModel;
 import com.algaworks.algafood.api.model.input.RestauranteInput;
 import com.algaworks.algafood.api.model.view.RestauranteView;
+import com.algaworks.algafood.api.openapi.controller.RestauranteControllerOpenApi;
 import com.algaworks.algafood.api.openapi.model.RestauranteBasicoOpenApi;
 import com.algaworks.algafood.domain.exception.CidadeNaoEncontraException;
 import com.algaworks.algafood.domain.exception.CozinhaNaoEncontraException;
@@ -36,8 +38,8 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/restaurantes")
-public class RestauranteController {
+@RequestMapping(value = "/restaurantes", produces = MediaType.APPLICATION_JSON_VALUE)
+public class RestauranteController implements RestauranteControllerOpenApi {
 	
 	@Autowired
 	private RestauranteRepository restauranteRepository;
