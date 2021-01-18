@@ -16,6 +16,7 @@ public class CidadeModel {
 	@ApiModelProperty(example = "Campinas")
 	private String nome;
 	
+	@ApiModelProperty(example = "São Paulo")
 	private EstadoModel estado;
 
 }
