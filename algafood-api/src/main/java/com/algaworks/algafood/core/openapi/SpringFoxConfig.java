@@ -88,7 +88,8 @@ public class SpringFoxConfig implements WebMvcConfigurer {
 						new Tag("Pedidos", "Gerencia os pedidos"),
 						new Tag("Restaurantes", "Gerencia os restaurantes"),
 						new Tag("Estados", "Gerencia os estados"),
-						new Tag("Produtos", "Gerencia os produtos de resturantes"));
+						new Tag("Produtos", "Gerencia os produtos de resturantes"),
+						new Tag("Usuários", "Gerencia os usuários"));
 
 	}
 	
