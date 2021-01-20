@@ -45,11 +45,5 @@ extends RepresentationModelAssemblerSupport<Cidade, CidadeModel>{
 		return super.toCollectionModel(entities)
 				.add(linkTo(CidadeController.class).withSelfRel());
 	}
-	
-//	public List<CidadeModel> toCollectionModel(List<Cidade> cidades) {
-//		return cidades.stream()
-//				.map(cidade -> toModel(cidade))
-//				.collect(Collectors.toList());
-//	}
 
 }
