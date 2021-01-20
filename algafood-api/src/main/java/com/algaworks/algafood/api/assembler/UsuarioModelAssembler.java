@@ -5,6 +5,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
 
@@ -36,6 +37,12 @@ public class UsuarioModelAssembler
 				.listar(usuario.getId())).withRel("grupos-usuarios"));
 		
 		return usuarioModel;
+	}
+	
+	@Override
+	public CollectionModel<UsuarioModel> toCollectionModel(Iterable<? extends Usuario> entities) {
+		return super.toCollectionModel(entities)
+				.add(linkTo(UsuarioController.class).withSelfRel());
 	}
 
 }
