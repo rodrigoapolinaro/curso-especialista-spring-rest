@@ -16,7 +16,7 @@ import com.algaworks.algafood.domain.model.Cidade;
 
 @Component
 public class CidadeModelAssembler 
-extends RepresentationModelAssemblerSupport<Cidade, CidadeModel>{
+extends RepresentationModelAssemblerSupport<Cidade, CidadeModel> {
 	
 	@Autowired
 	private ModelMapper modelMapper;
