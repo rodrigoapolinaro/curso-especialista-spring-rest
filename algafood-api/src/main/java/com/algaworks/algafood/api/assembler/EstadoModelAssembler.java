@@ -31,7 +31,7 @@ public class EstadoModelAssembler
 		
 		estadoModel.add(linkTo(methodOn(EstadoController.class)
 				.listar()).withRel("estados"));
-	
+
 		return estadoModel;
 	}
 	
