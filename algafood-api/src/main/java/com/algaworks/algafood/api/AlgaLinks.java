@@ -91,6 +91,11 @@ public class AlgaLinks {
 		return linkToRestauranteFormasPagamento(restauranteId, IanaLinkRelations.SELF.value());
 	}
 	
+	public Link linkToRestauranteFormaPagamentoAsossociacao(Long restauranteId, String rel) {
+		return linkTo(methodOn(RestauranteFormaPagamentoController.class)
+				.desassociar(restauranteId, null)).withRel(rel);
+	}
+	
 	public Link linkToRestauranteFormaPagamentoDesassociacao(
 			Long restauranteId, Long formaPagamentoId, String rel) {
 		return linkTo(methodOn(RestauranteFormaPagamentoController.class)
