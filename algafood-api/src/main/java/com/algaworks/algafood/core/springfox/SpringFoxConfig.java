@@ -30,6 +30,8 @@ import com.algaworks.algafood.api.model.FormaPagamentoModel;
 import com.algaworks.algafood.api.model.GrupoModel;
 import com.algaworks.algafood.api.model.PedidoResumoModel;
 import com.algaworks.algafood.api.model.ProdutoModel;
+import com.algaworks.algafood.api.model.RestauranteBasicoModel;
+import com.algaworks.algafood.api.model.UsuarioModel;
 import com.algaworks.algafood.api.model.input.PermissaoModel;
 import com.algaworks.algafood.api.openapi.model.CidadesModelOpenApi;
 import com.algaworks.algafood.api.openapi.model.CozinhasModelOpenApi;
@@ -41,6 +43,8 @@ import com.algaworks.algafood.api.openapi.model.PageableModelOpenApi;
 import com.algaworks.algafood.api.openapi.model.PedidosResumoModelOpenApi;
 import com.algaworks.algafood.api.openapi.model.PermissoesModelOpenApi;
 import com.algaworks.algafood.api.openapi.model.ProdutosModelOpenApi;
+import com.algaworks.algafood.api.openapi.model.RestaurantesBasicoModelOpenApi;
+import com.algaworks.algafood.api.openapi.model.UsuariosModelOpenApi;
 import com.fasterxml.classmate.TypeResolver;
 
 import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
@@ -121,6 +125,14 @@ public class SpringFoxConfig implements WebMvcConfigurer {
 				.alternateTypeRules(AlternateTypeRules.newRule(
 					    typeResolver.resolve(CollectionModel.class, ProdutoModel.class),
 					    ProdutosModelOpenApi.class))
+				
+				.alternateTypeRules(AlternateTypeRules.newRule(
+					    typeResolver.resolve(CollectionModel.class, RestauranteBasicoModel.class),
+					    RestaurantesBasicoModelOpenApi.class))
+
+				.alternateTypeRules(AlternateTypeRules.newRule(
+					    typeResolver.resolve(CollectionModel.class, UsuarioModel.class),
+					    UsuariosModelOpenApi.class))
 				
 				.apiInfo(apiInfo())
 				.tags(new Tag("Cidades", "Gerencia as cidades"),

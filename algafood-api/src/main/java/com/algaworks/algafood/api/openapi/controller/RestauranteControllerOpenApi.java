@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiResponses;
 @Api(tags = "Restaurantes")
 public interface RestauranteControllerOpenApi {
 	
-	@ApiOperation(value = "Lista restaurantes", response = RestauranteBasicoOpenApi.class)
+	@ApiOperation(value = "Lista restaurantes")
 	@ApiImplicitParams({
 		@ApiImplicitParam(value = "Nome da projeção de pedidos", allowableValues = "apenas-nome",
 				name = "projecao", paramType = "query", type = "string")
