@@ -29,7 +29,7 @@ extends RepresentationModelAssemblerSupport<Cozinha, CozinhaModelV2> {
 		CozinhaModelV2 cozinhaModel = createModelWithId(cozinha.getId(), cozinha);
 		modelMapper.map(cozinha, cozinhaModel);
 		
-		cozinhaModel.add(algaLinks.linkToCidades("cozinhas"));
+		cozinhaModel.add(algaLinks.linkToCozinhas("cozinhas"));
 						
 		return cozinhaModel;
 	}

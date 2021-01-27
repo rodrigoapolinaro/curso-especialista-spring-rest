@@ -7,6 +7,7 @@ import org.springframework.hateoas.Link;
 import org.springframework.stereotype.Component;
 
 import com.algaworks.algafood.api.v2.controller.CidadeControllerV2;
+import com.algaworks.algafood.api.v2.controller.CozinhaControllerV2;
 
 @Component
 public class AlgaLinksV2 {
@@ -20,7 +21,7 @@ public class AlgaLinksV2 {
 	}
 	
 	public Link linkToCozinhas(String rel) {
-		return linkTo(CidadeControllerV2.class).withRel(rel);
+		return linkTo(CozinhaControllerV2.class).withRel(rel);
 	}
 	
 	public Link linkToCozinhas() {

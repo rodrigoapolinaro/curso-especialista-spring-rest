@@ -13,8 +13,8 @@ import com.algaworks.algafood.domain.model.Cidade;
 
 @Component
 public class CidadeModelAssemblerV2 
-extends RepresentationModelAssemblerSupport<Cidade, CidadeModelV2> {
-	
+		extends RepresentationModelAssemblerSupport<Cidade, CidadeModelV2> {
+
 	@Autowired
 	private ModelMapper modelMapper;
 	
@@ -28,10 +28,11 @@ extends RepresentationModelAssemblerSupport<Cidade, CidadeModelV2> {
 	@Override
 	public CidadeModelV2 toModel(Cidade cidade) {
 		CidadeModelV2 cidadeModel = createModelWithId(cidade.getId(), cidade);
+		
 		modelMapper.map(cidade, cidadeModel);
 		
 		cidadeModel.add(algaLinks.linkToCidades("cidades"));
-						
+		
 		return cidadeModel;
 	}
 	
@@ -40,4 +41,5 @@ extends RepresentationModelAssemblerSupport<Cidade, CidadeModelV2> {
 		return super.toCollectionModel(entities)
 				.add(algaLinks.linkToCidades());
 	}
+	
 }
