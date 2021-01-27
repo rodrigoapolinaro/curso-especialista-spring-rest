@@ -30,7 +30,7 @@ import com.algaworks.algafood.domain.repository.CidadeRepository;
 import com.algaworks.algafood.domain.service.CadastroCidadeService;
 
 @RestController
-@RequestMapping(path = "/v2/cidades", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/V2/cidades", produces = MediaType.APPLICATION_JSON_VALUE)
 public class CidadeControllerV2 {
 
 	@Autowired
