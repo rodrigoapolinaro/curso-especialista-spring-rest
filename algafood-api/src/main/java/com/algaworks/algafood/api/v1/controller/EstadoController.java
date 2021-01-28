@@ -43,6 +43,7 @@ public class EstadoController implements EstadoControllerOpenApi{
 	@Autowired
 	private EstadoInputDisassembler estadoInputDisassembler;
 	
+	@Override
 	@GetMapping
 	public CollectionModel<EstadoModel> listar() {
 		List<Estado> todosEstados = estadoRepository.findAll();
@@ -50,6 +51,7 @@ public class EstadoController implements EstadoControllerOpenApi{
 		return estadoModelAssembler.toCollectionModel(todosEstados);
 	}
 	
+	@Override
 	@GetMapping("/{estadoId}")
 	public EstadoModel buscar(@PathVariable Long estadoId) {
 		Estado estado = cadastroEstado.buscarOuFalhar(estadoId);
@@ -57,6 +59,7 @@ public class EstadoController implements EstadoControllerOpenApi{
 		return estadoModelAssembler.toModel(estado);
 	}
 	
+	@Override
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public EstadoModel adicionar(@RequestBody @Valid EstadoInput estadoInput) {
@@ -67,6 +70,7 @@ public class EstadoController implements EstadoControllerOpenApi{
 		return estadoModelAssembler.toModel(estado);
 	}	
 	
+	@Override
 	@PutMapping("/{estadoId}")
 	public EstadoModel atualizar(@PathVariable Long estadoId,
 			@RequestBody @Valid EstadoInput estadoInput) {
@@ -79,6 +83,7 @@ public class EstadoController implements EstadoControllerOpenApi{
 		return estadoModelAssembler.toModel(estadoAtual);	
 	}
 	
+	@Override
 	@DeleteMapping("/{estadoId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void remover(@PathVariable Long estadoId) {
