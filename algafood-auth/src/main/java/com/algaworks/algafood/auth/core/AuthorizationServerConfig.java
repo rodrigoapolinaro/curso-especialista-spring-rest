@@ -1,5 +1,6 @@
 package com.algaworks.algafood.auth.core;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.security.oauth2.provider.CompositeTokenGranter;
 import org.springframework.security.oauth2.provider.TokenGranter;
 import org.springframework.security.oauth2.provider.approval.ApprovalStore;
 import org.springframework.security.oauth2.provider.approval.TokenApprovalStore;
+import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
@@ -83,11 +85,16 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+		var enhacerChain = new TokenEnhancerChain();
+		enhacerChain.setTokenEnhancers(
+				Arrays.asList(new JwtCustomClaimsTokenEnhacer(), jwtAccessTokenConverter()));
+		
 		endpoints
 			.authenticationManager(authenticationManager)
 			.userDetailsService(userDetailsService)
 			.reuseRefreshTokens(false)
 			.accessTokenConverter(jwtAccessTokenConverter())
+			.tokenEnhancer(enhacerChain)
 			.approvalStore(approvalStore(endpoints.getTokenStore()))
 			.tokenGranter(tokenGranter(endpoints));
 	}
