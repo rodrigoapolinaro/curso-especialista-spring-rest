@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
+import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 
 @Configuration
 @EnableWebSecurity
@@ -34,9 +35,14 @@ public class ResourceServerCongif extends WebSecurityConfigurerAdapter {
 				authorities = Collections.emptyList();
 			}
 			
-			return authorities.stream()
+			var scopesAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
+			var grantedAuthorities = scopesAuthoritiesConverter.convert(jwt);
+			
+			grantedAuthorities.addAll(authorities.stream()
 					.map(SimpleGrantedAuthority::new)
-					.collect(Collectors.toList());
+					.collect(Collectors.toList()));
+			
+			return grantedAuthorities;
 		});
 		
 		return jwtAuthenticationConverter;
