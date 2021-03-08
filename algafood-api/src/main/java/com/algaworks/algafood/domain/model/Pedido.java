@@ -108,7 +108,7 @@ public class Pedido extends AbstractAggregateRoot<Pedido> {
 		return getStatus().podeAlterarPara(StatusPedido.CONFIRMADO);
 	}
 	
-	public boolean podeSerEntreque() {
+	public boolean podeSerEntregue() {
 		return getStatus().podeAlterarPara(StatusPedido.ENTREGUE);
 	}
 	
